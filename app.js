@@ -7,8 +7,17 @@ function agregarAmigo() {
     const inputAmigo = document.getElementById('amigo');
     const nuevoAmigo = inputAmigo.value.trim();
 
+    // Validar que el campo no esté vacío
     if (nuevoAmigo === '') {
         alert('Por favor, ingrese un nombre de amigo válido.');
+        return;
+    }
+
+    // Nueva validación: usar una expresión regular para aceptar solo letras y espacios
+    const regex = /^[a-zA-Z\s]*$/;
+    if (!regex.test(nuevoAmigo)) {
+        alert('El nombre solo puede contener letras y espacios.');
+        inputAmigo.value = ''; // Opcional: limpiar el campo para que el usuario vuelva a intentarlo
         return;
     }
 
